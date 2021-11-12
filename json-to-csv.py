@@ -10,5 +10,9 @@ To do:
 import json
 
 
-f = open('double-take-tri.json')
+f = open('double-take.json')
 data = json.load(f)
+print(data)
+
+# for item in data:
+#     print(item)
