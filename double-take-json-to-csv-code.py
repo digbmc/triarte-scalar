@@ -3,9 +3,17 @@ import csv
 
 row_list = []
 
-f = open('triarte-scalar-main/double-take.json')
+f = open('double-take.json')
 data = json.load(f)
 #print(data)
+
+# add the equivalent scalar metadata labels for each row here
+header_row = [
+    'dcterms:source', 
+    '?',
+    'dcterms:date'
+    'dcterms:title'
+]
 
 for item in data['objects']:
     URL = (item['URL'])
@@ -31,6 +39,11 @@ for item in data['objects']:
          
          row_list.append(eachitem)
 
-with open('double-take.csv', 'w', newline='') as file:
+with open('output/double-take.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerows(row_list) # I just manually added the headers/metadata fields because I forgot how to do that in python
+    writer.writerow(header_row)
+    writer.writerows(row_list) 
+    
+    '''
+    # I just manually added the headers/metadata fields because I forgot how to do that in python
+    '''
